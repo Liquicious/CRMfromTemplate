@@ -1,0 +1,52 @@
+﻿@model BookModel
+
+@{
+	var exists = Model != null && Model.IdBook != 0;
+	ViewBag.Title = (exists ? "Редактирование" : "Создание") + " Book";
+}
+
+<form asp-action="Update" asp-antiforgery="true" method="post">
+	<div class="row">
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="IdBook"></label>
+				<input type="text" asp-for="IdBook" class="form-control"/>
+				<span asp-validation-for="IdBook" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="BookName"></label>
+				<input type="text" asp-for="BookName" class="form-control"/>
+				<span asp-validation-for="BookName" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="Author"></label>
+				<input type="text" asp-for="Author" class="form-control"/>
+				<span asp-validation-for="Author" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="YearOfWriting"></label>
+				<input type="text" asp-for="YearOfWriting" class="form-control"/>
+				<span asp-validation-for="YearOfWriting" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="Country"></label>
+				<input type="text" asp-for="Country" class="form-control"/>
+				<span asp-validation-for="Country" class="text-danger"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<button class="btn btn-outline-primary" type="submit">@(exists ? "Сохранить" : "Добавить")</button>
+			<a asp-action="Index" class="btn btn-outline-secondary">Отмена</a>
+		</div>
+	</div>
+</form>
